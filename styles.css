@@ -42,10 +42,26 @@ body {
     align-items: center;
 }
 
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.logo-img {
+    width: 42px;
+    height: 41px;
+    margin-left: -5px;
+    margin-right: -5px;
+    object-fit: contain;
+}
+
 .logo {
     color: var(--primary);
     font-size: 1.8rem;
     font-weight: bold;
+    padding-left: 7px;
+    padding-right: 7px;
 }
 
 .nav-menu {
