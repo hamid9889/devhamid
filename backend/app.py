@@ -11,6 +11,7 @@ Features:
   - /contact    : Contact form email dispatch (Flask-Mail + Gmail App Password)
   - /test-email : Simple test route for email verification
 """
+from flask_mail import Mail, Message
 
 import os
 import sys
