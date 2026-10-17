@@ -1,0 +1,23 @@
+# ==============================================================================
+# DevHamid Portfolio - Python Backend Dependencies
+# Production-ready requirements for AI/ML pipelines, GenAI, and Supabase integration
+# ==============================================================================
+
+# Web Framework & CORS
+Flask==3.0.3
+Flask-Cors==4.0.1
+python-dotenv==1.0.1
+requests==2.32.3
+gunicorn==22.0.0
+
+# Database Integration (Cloud PostgreSQL)
+supabase==2.13.0
+
+# Computer Vision & Face Recognition Pipeline
+face_recognition==1.3.0
+dlib>=19.24.0
+opencv-python-headless==4.10.0.84
+
+# Audio & Voice Biometrics Pipeline
+SpeechRecognition==3.10.4
+pydub==0.25.1

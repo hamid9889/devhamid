@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: devhamid-portfolio-backend
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: GITHUB_USERNAME
+        value: hamid9889
+      - key: RECEIVER_EMAIL
+        value: 8090hamid@gmail.com
+      - key: EMAIL_SERVICE
+        value: gmail
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: FRONTEND_URL
+        value: https://devhamid.vercel.app

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO & OpenGraph Meta Tags -->
+  <title>Hamid | AI & ML Developer Portfolio | B.Tech CS & AI</title>
+  <meta name="description" content="Portfolio of Hamid - B.Tech CS & AI Student specializing in Python, AWS, Machine Learning, Deep Learning, and Data Structures & Algorithms. View projects, ML research infographics, and get in touch." />
+  <meta name="keywords" content="Hamid, Developer Portfolio, Machine Learning, Python, AWS, DSA, PyTorch, Artificial Intelligence, CS & AI" />
+  <meta name="author" content="Hamid" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Social Media Previews -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hamid | B.Tech CS & AI Developer Portfolio" />
+  <meta property="og:description" content="Explore machine learning projects, open source GitHub repositories, and AI infographics." />
+  <meta property="og:image" content="assets/images/profile.jpeg" />
+  <meta property="og:url" content="https://devhamid.vercel.app/" />
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hamid | AI & ML Developer Portfolio" />
+  <meta name="twitter:description" content="B.Tech CS & AI Student | Python, AWS, Git, DSA." />
+  <meta name="twitter:image" content="assets/images/profile.jpeg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/images/favicon.png" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar" id="mainNavbar">
+      <div class="nav-container">
+        <a href="#home" class="brand-wrapper" aria-label="DevHamid Home">
+          <img src="assets/images/logo.png" alt="DevHamid Logo" class="brand-logo-img" />
+          <span class="brand-title">DevHamid</span>
+        </a>
+
+        <div class="nav-right-cluster">
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#blog" class="nav-link">ML & Math Blog</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+
+          <!-- Dark / Light Mode Toggle Button -->
+          <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark and Light Mode" title="Toggle Theme">
+            <svg id="themeIconSun" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+            </svg>
+            <svg id="themeIconMoon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display: none;">
+              <path d="M12.3 2a10 10 0 0 0-.19 20 10 10 0 0 0 8.35-4.5.75.75 0 0 0-.62-1.16 8.5 8.5 0 0 1-8.5-8.5.75.75 0 0 0-.58-.73A7.51 7.51 0 0 1 12.3 2Z"/>
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Mobile Navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <canvas id="heroParticleCanvas"></canvas>
+      <div class="hero-container">
+        <!-- Avatar Column -->
+        <div class="hero-avatar-column">
+          <div class="avatar-halo-wrapper">
+            <div class="avatar-halo-ring"></div>
+            <div class="avatar-image-frame">
+              <img src="assets/images/profile.jpeg" alt="Hamid - Developer" class="hero-avatar-img" />
+              <div class="status-badge">
+                <span class="status-pulse-dot"></span>
+                <span>Open for AI & Cloud roles</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Column -->
+        <div class="hero-content-column">
+          <div class="hero-greeting-badge">
+            <span>✨ Welcome to my developer space</span>
+          </div>
+
+          <!-- Hero Main Title -->
+          <h1 class="hero-title">
+            Hi, I’m <span class="name-highlight">Hamid</span> 👋
+          </h1>
+
+          <!-- Tagline -->
+          <p class="hero-tagline">
+            Specializing in AI/ML &amp; Generative AI
+          </p>
+
+          <!-- Typing Dynamic Subtitle -->
+          <div class="hero-typing-wrapper">
+            <span>Specializing in:</span>
+            <strong id="typingText" class="typing-text">Machine Learning & Deep Learning</strong>
+            <span class="typing-cursor">|</span>
+          </div>
+
+          <!-- Visitor Counter Badge -->
+          <div class="visitor-counter-pill" id="visitorCounterBadge" title="Live Visitor Counter">
+            <span>👁️ Portfolio Visits:</span>
+            <span class="visitor-count-number" id="visitorCountDisplay">--</span>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn-primary" id="heroViewWorkBtn" onclick="Analytics.trackEvent('view_work_click', 'Hero', 'View My Work')">
+              <span>View My Work</span>
+              <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                <path fill-rule="evenodd" d="M1 8a.75.75 0 0 1 .75-.75h11.793l-3.147-3.146a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.147-3.147H1.75A.75.75 0 0 1 1 8Z"></path>
+              </svg>
+            </a>
+
+            <a href="#contact" class="btn-secondary" id="heroContactBtn" onclick="Analytics.trackEvent('contact_cta_click', 'Hero', 'Get In Touch')">
+              <span>Get In Touch</span>
+            </a>
+          </div>
+
+          <!-- Quick Social Links -->
+          <div class="hero-social-links">
+            <a href="https://github.com/hamid9889" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="GitHub Profile" title="GitHub (@hamid9889)">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/>
+              </svg>
+            </a>
+
+            <a href="https://www.linkedin.com/in/hamid-ansari-h142643/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn Profile" title="LinkedIn Profile">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.8v8.37h-2.8v-8.37M7.86 6.54a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26Z"/>
+              </svg>
+            </a>
+
+            <a href="https://x.com/Hamidansari09" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="X Twitter Profile" title="Twitter / X (@Hamidansari09)">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+
+            <a href="mailto:8090hamid@gmail.com" class="social-icon-btn" aria-label="Email Hamid" title="Direct Email">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="section-header">
+        <span class="section-subtitle">Get to know me</span>
+        <h2 class="section-title">About My Journey</h2>
+        <p class="section-description">
+          Bridging foundational computer science algorithms with bleeding-edge artificial intelligence, deep learning systems, and cloud-native backends.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card glass-card">
+          <div class="about-text">
+            <p>
+              I am an <strong>AI & Machine Learning Developer</strong> and <strong>B.Tech CSE (AI)</strong> student passionate about building intelligent solutions with Python, Machine Learning & Generative AI.
+            </p>
+            <p>
+              With real-world experience as an <strong>Ex- Data Analyst Intern at @bluestocks Fintech</strong> and <strong>Ex- Machine Learning Intern at @cognifyz it solutions</strong>, I love turning complex data and algorithmic ideas into scalable, production-ready AI applications.
+            </p>
+            <p>
+              As a <strong>VIBE Coding Expert</strong> exploring bleeding-edge artificial intelligence, I build full-stack solutions ranging from computer vision attendance platforms to multi-agent LLM systems and financial risk analytics.
+            </p>
+          </div>
+
+          <div class="about-highlights">
+            <div class="highlight-box">
+              <h4>🎓 B.Tech CSE (AI)</h4>
+              <p>Specialization in Machine Learning, Deep Learning, SQL & DSA</p>
+            </div>
+            <div class="highlight-box">
+              <h4>💼 Ex- Data Analyst</h4>
+              <p>Internship experience at <strong>@bluestocks Fintech</strong></p>
+            </div>
+            <div class="highlight-box">
+              <h4>🤖 Ex- ML Intern</h4>
+              <p>Machine learning engineering at <strong>@cognifyz it solutions</strong></p>
+            </div>
+            <div class="highlight-box">
+              <h4>🔥 VIBE Coding & GenAI</h4>
+              <p>Generative AI, Agentic Workflows & Rapid AI Prototyping</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Summary Card -->
+        <div class="skills-wrapper">
+          <div class="skill-category-card glass-card">
+            <h3>🚀 What I Do</h3>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1rem;">
+              Designing end-to-end Machine Learning pipelines, training deep neural networks, engineering agentic LLM architectures, and deploying cloud-native web backends.
+            </p>
+            <div class="skill-pills">
+              <span class="skill-pill">AI & ML Engineer</span>
+              <span class="skill-pill">Python Developer</span>
+              <span class="skill-pill">Generative AI</span>
+              <span class="skill-pill">Data Analytics</span>
+              <span class="skill-pill">SQL & Databases</span>
+              <span class="skill-pill">Web Development</span>
+            </div>
+          </div>
+
+          <div class="skill-category-card glass-card">
+            <h3>⚡ Core Philosophy</h3>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">
+              <em>"Building intelligent solutions with Python, Machine Learning & Generative AI — learning, building, and always open to impactful opportunities."</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dedicated Skills & Tech Stack Section -->
+    <section id="skills" class="skills skills-section">
+      <div class="section-header">
+        <span class="section-subtitle">Technical Arsenal</span>
+        <h2 class="section-title">Skills & Tech Stack</h2>
+        <p class="section-description">
+          All the technologies, frameworks, libraries, and tools I use to build intelligent AI solutions and robust applications.
+        </p>
+      </div>
+
+      <!-- GitHub Tech Stack Badges Wall -->
+      <div class="tech-badges-banner">
+        <div class="tech-badges-header">
+          <h3>💻 Tech Stack:</h3>
+        </div>
+        <div class="tech-badges-container">
+          <span class="tech-badge tb-c">C</span>
+          <span class="tech-badge tb-html5">HTML5</span>
+          <span class="tech-badge tb-python">PYTHON</span>
+          <span class="tech-badge tb-css3">CSS3</span>
+          <span class="tech-badge tb-vercel">▲ VERCEL</span>
+          <span class="tech-badge tb-firebase">🔥 FIREBASE</span>
+          <span class="tech-badge tb-netlify">NETLIFY</span>
+          <span class="tech-badge tb-bootstrap">BOOTSTRAP</span>
+          <span class="tech-badge tb-fastapi">⚡ FASTAPI</span>
+          <span class="tech-badge tb-flask">FLASK</span>
+          <span class="tech-badge tb-mysql">MYSQL</span>
+          <span class="tech-badge tb-adobe">ADOBE</span>
+          <span class="tech-badge tb-canva">CANVA</span>
+          <span class="tech-badge tb-figma">FIGMA</span>
+          <span class="tech-badge tb-matplotlib">MATPLOTLIB</span>
+          <span class="tech-badge tb-numpy">NUMPY</span>
+          <span class="tech-badge tb-pandas">PANDAS</span>
+          <span class="tech-badge tb-plotly">PLOTLY</span>
+          <span class="tech-badge tb-scikit">SCIKIT-LEARN</span>
+          <span class="tech-badge tb-tensorflow">TENSORFLOW</span>
+          <span class="tech-badge tb-actions">GITHUB ACTIONS</span>
+          <span class="tech-badge tb-github">GITHUB</span>
+          <span class="tech-badge tb-genai">🧠 GENERATIVE AI</span>
+        </div>
+      </div>
+
+      <!-- Categorized Skills Grid -->
+      <div class="skills-categories-grid">
+        <!-- AI & ML -->
+        <div class="skills-cat-card glass-card">
+          <div class="skills-cat-header">
+            <div class="skills-cat-icon">🤖</div>
+            <div>
+              <h4 class="skills-cat-title">AI, ML & Data Science</h4>
+              <span class="skills-cat-subtitle">Model Architecture & Analytics</span>
+            </div>
+          </div>
+          <div class="skills-item-tags">
+            <span class="skills-item-tag featured">Python</span>
+            <span class="skills-item-tag featured">TensorFlow</span>
+            <span class="skills-item-tag featured">Scikit-Learn</span>
+            <span class="skills-item-tag featured">Generative AI</span>
+            <span class="skills-item-tag">NumPy</span>
+            <span class="skills-item-tag">Pandas</span>
+            <span class="skills-item-tag">Matplotlib</span>
+            <span class="skills-item-tag">Plotly</span>
+            <span class="skills-item-tag">PyTorch</span>
+            <span class="skills-item-tag">Computer Vision</span>
+            <span class="skills-item-tag">Agentic AI</span>
+          </div>
+        </div>
+
+        <!-- Backend & Databases -->
+        <div class="skills-cat-card glass-card">
+          <div class="skills-cat-header">
+            <div class="skills-cat-icon">⚙️</div>
+            <div>
+              <h4 class="skills-cat-title">Backend & Databases</h4>
+              <span class="skills-cat-subtitle">APIs & Data Persistence</span>
+            </div>
+          </div>
+          <div class="skills-item-tags">
+            <span class="skills-item-tag featured">FastAPI</span>
+            <span class="skills-item-tag featured">Flask</span>
+            <span class="skills-item-tag featured">MySQL</span>
+            <span class="skills-item-tag">SQL & Query Optimization</span>
+            <span class="skills-item-tag">Node.js</span>
+            <span class="skills-item-tag">Express.js</span>
+            <span class="skills-item-tag">RESTful APIs</span>
+          </div>
+        </div>
+
+        <!-- Frontend Development -->
+        <div class="skills-cat-card glass-card">
+          <div class="skills-cat-header">
+            <div class="skills-cat-icon">🌐</div>
+            <div>
+              <h4 class="skills-cat-title">Frontend & Web UI</h4>
+              <span class="skills-cat-subtitle">Modern Responsive Interfaces</span>
+            </div>
+          </div>
+          <div class="skills-item-tags">
+            <span class="skills-item-tag featured">HTML5</span>
+            <span class="skills-item-tag featured">CSS3</span>
+            <span class="skills-item-tag featured">JavaScript (ES6+)</span>
+            <span class="skills-item-tag">Bootstrap</span>
+            <span class="skills-item-tag">Responsive Flexbox / Grid</span>
+            <span class="skills-item-tag">Glassmorphism UI</span>
+          </div>
+        </div>
+
+        <!-- Cloud & DevOps -->
+        <div class="skills-cat-card glass-card">
+          <div class="skills-cat-header">
+            <div class="skills-cat-icon">☁️</div>
+            <div>
+              <h4 class="skills-cat-title">Cloud & DevOps</h4>
+              <span class="skills-cat-subtitle">Deployment & Continuous Integration</span>
+            </div>
+          </div>
+          <div class="skills-item-tags">
+            <span class="skills-item-tag featured">GitHub Actions</span>
+            <span class="skills-item-tag featured">Vercel</span>
+            <span class="skills-item-tag featured">Firebase</span>
+            <span class="skills-item-tag">Netlify</span>
+            <span class="skills-item-tag">Render</span>
+            <span class="skills-item-tag">AWS (EC2, S3)</span>
+          </div>
+        </div>
+
+        <!-- Programming & Core CS -->
+        <div class="skills-cat-card glass-card">
+          <div class="skills-cat-header">
+            <div class="skills-cat-icon">💻</div>
+            <div>
+              <h4 class="skills-cat-title">Languages & Core CS</h4>
+              <span class="skills-cat-subtitle">Foundations & Algorithms</span>
+            </div>
+          </div>
+          <div class="skills-item-tags">
+            <span class="skills-item-tag featured">Python</span>
+            <span class="skills-item-tag featured">C Programming</span>
+            <span class="skills-item-tag featured">Data Structures (DSA)</span>
+            <span class="skills-item-tag">Linear Algebra</span>
+            <span class="skills-item-tag">Git & GitHub</span>
+            <span class="skills-item-tag">Linux Command Line</span>
+          </div>
+        </div>
+
+        <!-- Creative & Design -->
+        <div class="skills-cat-card glass-card">
+          <div class="skills-cat-header">
+            <div class="skills-cat-icon">🎨</div>
+            <div>
+              <h4 class="skills-cat-title">Design & Creative</h4>
+              <span class="skills-cat-subtitle">Prototyping & Visual Presentation</span>
+            </div>
+          </div>
+          <div class="skills-item-tags">
+            <span class="skills-item-tag featured">Figma</span>
+            <span class="skills-item-tag featured">Canva</span>
+            <span class="skills-item-tag featured">Adobe</span>
+            <span class="skills-item-tag">UI/UX Prototyping</span>
+            <span class="skills-item-tag">Technical Infographics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="section-header">
+        <span class="section-subtitle">Open Source & Research</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-description">
+          Repositories automatically synchronized in real-time from my GitHub profile (<strong>@hamid9889</strong>).
+        </p>
+      </div>
+
+      <!-- Filter Controls & Search -->
+      <div class="projects-controls">
+        <div class="filter-chips-group">
+          <button class="filter-chip active" data-filter="all">All Projects</button>
+          <button class="filter-chip" data-filter="ai">AI & Machine Learning</button>
+          <button class="filter-chip" data-filter="dsa">Python & DSA</button>
+          <button class="filter-chip" data-filter="web">Web & Systems</button>
+        </div>
+
+        <div class="search-input-wrapper">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+          <input type="text" id="projectSearchInput" class="search-input" placeholder="Search by name, topic, or language..." />
+        </div>
+      </div>
+
+      <!-- Projects Responsive Grid (Populated dynamically by github.js) -->
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- Blog Section (LinkedIn-Style Cards) -->
+    <section id="blog" class="blog">
+      <div class="section-header">
+        <span class="section-subtitle">Knowledge Sharing</span>
+        <h2 class="section-title">ML Libraries & Mathematics Blog</h2>
+        <p class="section-description">
+          Visual infographics and deep-dive technical posts exploring computational calculus, neural network architectures, and modern ML library ergonomics.
+        </p>
+      </div>
+
+      <!-- Filter Tag Chips -->
+      <div class="blog-filters-row">
+        <button class="blog-filter-chip active" data-tag="all">All Topics</button>
+        <button class="blog-filter-chip" data-tag="NeuralNetworks">Neural Networks & Calculus</button>
+        <button class="blog-filter-chip" data-tag="PyTorch">PyTorch & JAX</button>
+        <button class="blog-filter-chip" data-tag="LinearAlgebra">Linear Algebra & SVD</button>
+      </div>
+
+      <!-- Blog Posts Grid (Populated dynamically by blog.js) -->
+      <div class="blog-posts-grid" id="blogPostsContainer">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="section-header">
+        <span class="section-subtitle">Let's build something together</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-description">
+          Have an internship opportunity, project collaboration, or question about my ML research? Send a message directly to my inbox!
+        </p>
+      </div>
+
+      <div class="contact-container">
+        <!-- Contact Information Card -->
+        <div class="contact-info-card glass-card">
+          <h3>Let's Connect</h3>
+          <p>
+            I am always eager to discuss machine learning applications, backend architecture, open-source projects, and exciting software engineering roles.
+          </p>
+
+          <div class="contact-channels">
+            <a href="mailto:8090hamid@gmail.com" class="channel-item">
+              <div class="channel-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="channel-label">Direct Email</span>
+                <p class="channel-value">8090hamid@gmail.com</p>
+              </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/hamid-ansari-h142643/" target="_blank" rel="noopener noreferrer" class="channel-item">
+              <div class="channel-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.8v8.37h-2.8v-8.37M7.86 6.54a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26Z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="channel-label">Professional Network</span>
+                <p class="channel-value">linkedin.com/in/hamid-ansari-h142643</p>
+              </div>
+            </a>
+
+            <a href="https://github.com/hamid9889" target="_blank" rel="noopener noreferrer" class="channel-item">
+              <div class="channel-icon">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="channel-label">Open Source Repositories</span>
+                <p class="channel-value">github.com/hamid9889</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form Card -->
+        <div class="contact-form-card glass-card">
+          <form id="contactForm" class="contact-form" novalidate>
+            <div class="form-group">
+              <label for="contactName" class="form-label">Your Name <span style="color:var(--accent-pink)">*</span></label>
+              <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. Alex Johnson" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Your Email Address <span style="color:var(--accent-pink)">*</span></label>
+              <input type="email" id="contactEmail" name="email" class="form-input" placeholder="e.g. alex@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage" class="form-label">Your Message <span style="color:var(--accent-pink)">*</span></label>
+              <textarea id="contactMessage" name="message" class="form-textarea" placeholder="Hello Hamid, I saw your portfolio and would like to discuss..." rows="5" required></textarea>
+            </div>
+
+            <button type="submit" id="contactSubmitBtn" class="form-submit-btn">
+              <span>Send Message Directly</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Article Reader Modal -->
+  <div class="app-modal" id="postModal" role="dialog" aria-modal="true" aria-labelledby="postModalTitle">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container">
+      <button class="modal-close" aria-label="Close dialog">&times;</button>
+      <div class="modal-body" id="postModalBody">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- High-Res Infographic Lightbox Modal -->
+  <div class="app-modal image-modal" id="imageModal" role="dialog" aria-modal="true" aria-label="Infographic Lightbox">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container">
+      <button class="modal-close" aria-label="Close image lightbox">&times;</button>
+      <div class="image-modal-content">
+        <img id="modalImageElement" src="" alt="Infographic High-Res" class="modal-large-img" />
+        <h4 id="modalImageTitle" class="modal-image-title"></h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="assets/images/logo.png" alt="DevHamid" width="32" height="32" />
+        <span class="brand-title">DevHamid</span>
+      </div>
+
+      <ul class="footer-nav">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="footer-social-row">
+        <a href="https://github.com/hamid9889" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/hamid-ansari-h142643/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.8v8.37h-2.8v-8.37M7.86 6.54a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26Z"/></svg>
+        </a>
+        <a href="https://x.com/Hamidansari09" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Twitter / X">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Hamid. Built with HTML, CSS, JavaScript & Node.js backend integration.</p>
+        <p>Deployed on Vercel & Render</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/github.js"></script>
+  <script src="js/blog.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

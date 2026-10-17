@@ -1,0 +1,32 @@
+# ==============================================================================
+# DevHamid Portfolio - Vercel Deployment Ignore Rules
+# Excludes backend, tests, configs, and server dependencies from frontend build
+# ==============================================================================
+
+# Backend server and pipelines (hosted on Render/Railway)
+backend/
+config/
+tests/
+docs/
+
+# Python files and artifacts
+*.py
+requirements.txt
+Procfile
+render.yaml
+__pycache__/
+*.pyc
+
+# Local databases and secrets
+*.db
+*.sqlite
+.env*
+config/.env
+
+# Dependencies & Git
+node_modules/
+.git/
+.github/
+
+# Logs
+*.log
