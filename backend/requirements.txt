@@ -1,24 +1,22 @@
 # ==============================================================================
-# DevHamid Portfolio - Python Backend Dependencies
-# Production-ready requirements for AI/ML pipelines, GenAI, and Supabase integration
+# DevHamid Portfolio - Lightweight Production Requirements for Render
+# Optimized for fast, clean build without heavy C++ compilers
 # ==============================================================================
 
-# Web Framework & Extensions
-Flask==3.0.3
-Flask-Cors==4.0.1
-Flask-Mail==0.10.0
-python-dotenv==1.0.1
-requests==2.32.3
-gunicorn==22.0.0
+# Web Framework & Server
+Flask>=3.0.0
+Flask-Cors>=4.0.0
+Flask-Mail>=0.10.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+gunicorn>=21.2.0
 
-# Database Integration (Cloud PostgreSQL)
-supabase==2.13.0
+# Supabase Cloud Database Client
+supabase>=2.0.0
 
-# Computer Vision & Face Recognition Pipeline
-face_recognition==1.3.0
-dlib>=19.24.0
-opencv-python-headless==4.10.0.84
+# Computer Vision (Precompiled Headless, zero GUI bloat)
+opencv-python-headless>=4.8.0
 
-# Audio & Voice Biometrics Pipeline
-SpeechRecognition==3.10.4
-pydub==0.25.1
+# Speech & Audio Processing
+SpeechRecognition>=3.10.0
+pydub>=0.25.0

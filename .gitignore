@@ -81,6 +81,17 @@ debug*
 *debug*
 *.tmp
 *.temp
-tmp/
-temp/
+# Datasets & Large Media Files
+*.csv.gz
+*.tar.gz
+*.zip
+*.h5
+*.hdf5
+*.pkl
+*.parquet
+*.mp4
+*.mkv
+*.avi
+datasets/
+data_dumps/
 
