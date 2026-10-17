@@ -54,12 +54,20 @@ def get_github_projects(username: str = "hamid9889") -> List[Dict[str, Any]]:
                 if repo.get("name") == username and not repo.get("description"):
                     continue
 
+                html_url = repo.get("html_url") or f"https://github.com/{username}/{repo.get('name')}"
+                stargazers = repo.get("stargazers_count", 0)
+                forks_count = repo.get("forks_count", 0)
                 projects.append({
                     "name": repo.get("name", "Untitled"),
                     "description": repo.get("description") or "No description provided.",
-                    "stars": repo.get("stargazers_count", 0),
-                    "forks": repo.get("forks_count", 0),
-                    "link": repo.get("html_url", f"https://github.com/{username}/{repo.get('name')}")
+                    "stars": stargazers,
+                    "stargazers_count": stargazers,
+                    "forks": forks_count,
+                    "forks_count": forks_count,
+                    "link": html_url,
+                    "html_url": html_url,
+                    "language": repo.get("language") or "Python",
+                    "topics": repo.get("topics") or []
                 })
 
             _cache["projects"] = projects
@@ -82,21 +90,36 @@ def get_github_projects(username: str = "hamid9889") -> List[Dict[str, Any]]:
             "name": "DevHamid",
             "description": "Professional Full-Stack Developer Portfolio & AI Research Showcase.",
             "stars": 5,
+            "stargazers_count": 5,
             "forks": 1,
-            "link": f"https://github.com/{username}/DevHamid"
+            "forks_count": 1,
+            "link": f"https://github.com/{username}/DevHamid",
+            "html_url": f"https://github.com/{username}/DevHamid",
+            "language": "Python",
+            "topics": ["portfolio", "flask", "supabase", "render"]
         },
         {
             "name": "face-attendance-system",
             "description": "Real-time face recognition attendance system using OpenCV, dlib and Supabase.",
             "stars": 12,
+            "stargazers_count": 12,
             "forks": 3,
-            "link": f"https://github.com/{username}/face-attendance-system"
+            "forks_count": 3,
+            "link": f"https://github.com/{username}/face-attendance-system",
+            "html_url": f"https://github.com/{username}/face-attendance-system",
+            "language": "Python",
+            "topics": ["face-recognition", "opencv", "computer-vision"]
         },
         {
             "name": "voice-biometrics-attendance",
             "description": "Voice recognition and anti-spoofing attendance system with PyDub & SpeechRecognition.",
             "stars": 8,
+            "stargazers_count": 8,
             "forks": 2,
-            "link": f"https://github.com/{username}/voice-biometrics-attendance"
+            "forks_count": 2,
+            "link": f"https://github.com/{username}/voice-biometrics-attendance",
+            "html_url": f"https://github.com/{username}/voice-biometrics-attendance",
+            "language": "Python",
+            "topics": ["voice-recognition", "biometrics", "audio-processing"]
         }
     ]

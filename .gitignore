@@ -42,11 +42,9 @@ datasets/
 config/.env
 *.env.local
 
-# Decoupled Frontend and Test Folders (Backend Only for Render)
-/frontend
-frontend/
-/tests
-tests/
+# Local Secrets & Dev Files
+.env.development
+.env.test
 
 # Build & Distribution Artifacts
 build/

@@ -43,14 +43,7 @@ app = Flask(__name__)
 # Configure Cross-Origin Resource Sharing (CORS)
 try:
     from flask_cors import CORS
-    allowed_origins = [
-        "http://localhost:3000",
-        "http://localhost:5000",
-        "http://localhost:5500",
-        "http://127.0.0.1:5500",
-        os.getenv("FRONTEND_URL")
-    ]
-    CORS(app, origins=[o for o in allowed_origins if o], supports_credentials=True)
+    CORS(app, resources={r"/*": {"origins": "*"}})
 except ImportError:
     pass
 
