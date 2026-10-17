@@ -60,7 +60,7 @@ try:
 except ImportError:
     from services.email_service import init_mail  # type: ignore
 
-init_mail(app)
+# init_mail(app)
 
 # Register Modular Blueprints
 try:
