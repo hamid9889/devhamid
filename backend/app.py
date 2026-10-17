@@ -58,7 +58,8 @@ except Exception as e:
 # Flask-Mail Config (Gmail SMTP + App Password)
 app.config['MAIL_SERVER'] = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
 app.config['MAIL_PORT'] = int(os.getenv('EMAIL_PORT', 587))
-app.config['MAIL_USE_TLS'] = os.getenv('EMAIL_SECURE', 'false').lower() != 'true'
+app.config['MAIL_USE_TLS'] = True
+
 app.config['MAIL_USERNAME'] = os.getenv("EMAIL_USER")
 app.config['MAIL_PASSWORD'] = os.getenv("EMAIL_PASS")
 
