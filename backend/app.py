@@ -228,3 +228,14 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     print(f"[INFO] Starting DevHamid Flask Backend on port {port}...")
     app.run(host="0.0.0.0", port=port)
+
+@app.route("/test-email")
+def test_email():
+    msg = Message(
+        subject="Test Email",
+        sender=os.getenv("EMAIL_USER"),
+        recipients=[os.getenv("EMAIL_USER")],
+        body="This is a test email from Flask backend."
+    )
+    mail.send(msg)
+    return "Test email sent!"
