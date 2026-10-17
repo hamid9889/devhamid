@@ -27,8 +27,8 @@ _local_store = {
 
 def get_supabase_client() -> Optional[Any]:
     """Initialize and return Supabase client using SUPABASE_URL and SUPABASE_KEY."""
-    url = os.getenv("SUPABASE_URL") or os.getenv("NEXT_PUBLIC_SUPABASE_URL")
-    key = os.getenv("SUPABASE_KEY") or os.getenv("SUPABASE_SERVICE_KEY") or os.getenv("SUPABASE_ANON_KEY")
+    url = (os.getenv("SUPABASE_URL") or os.getenv("NEXT_PUBLIC_SUPABASE_URL") or "").strip().strip('"\'')
+    key = (os.getenv("SUPABASE_KEY") or os.getenv("SUPABASE_SERVICE_KEY") or os.getenv("SUPABASE_ANON_KEY") or "").strip().strip('"\'')
 
     if not url or not key or "your-supabase-project" in url:
         return None

@@ -16,8 +16,11 @@ except ImportError:
     create_client = None
     Client = None
 
-SUPABASE_URL = os.getenv("SUPABASE_URL") or os.getenv("NEXT_PUBLIC_SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY") or os.getenv("SUPABASE_KEY") or os.getenv("SUPABASE_ANON_KEY")
+raw_url = os.getenv("SUPABASE_URL") or os.getenv("NEXT_PUBLIC_SUPABASE_URL") or ""
+raw_key = os.getenv("SUPABASE_SERVICE_KEY") or os.getenv("SUPABASE_KEY") or os.getenv("SUPABASE_ANON_KEY") or ""
+
+SUPABASE_URL = raw_url.strip().strip('"\'')
+SUPABASE_KEY = raw_key.strip().strip('"\'')
 
 _client: Optional[Any] = None
 _is_configured = False
