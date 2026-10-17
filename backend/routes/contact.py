@@ -1,7 +1,7 @@
 """
 Contact Route Blueprint
 Handles contact form submissions via POST /contact.
-Sends notifications via Flask-Mail to TARGET_EMAIL.
+Sends notifications via SendGrid API to TARGET_EMAIL.
 Returns JSON {status: "success"} or {status: "error"}.
 """
 
@@ -67,7 +67,7 @@ def handle_contact():
     # Persist contact to Supabase
     save_contact(name, email, message)
 
-    # Dispatch email via Flask-Mail service
+    # Dispatch email via SendGrid service
     success, msg = send_contact_email(name, email, message)
 
     if success:

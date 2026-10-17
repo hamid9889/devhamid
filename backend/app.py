@@ -8,10 +8,9 @@ Features:
   - /contacts   : Contact entries from Supabase
   - /visits     : Visitor counter with Supabase
   - /visits/increment : Visitor counter increment
-  - /contact    : Contact form email dispatch (Flask-Mail + Gmail App Password)
-  - /test-email : Simple test route for email verification
+  - /contact    : Contact form email dispatch via SendGrid API
+  - /test-email : Simple test route for SendGrid email verification
 """
-from flask_mail import Mail, Message
 
 import os
 import sys
@@ -41,6 +40,16 @@ for p in env_candidates:
         print(f"[INFO] Loaded environment from: {p}")
         break
 
+# SendGrid imports
+try:
+    from sendgrid import SendGridAPIClient  # type: ignore
+    from sendgrid.helpers.mail import Mail, Email, ReplyTo  # type: ignore
+except ImportError:
+    SendGridAPIClient = None  # type: ignore
+    Mail = None  # type: ignore
+    Email = None  # type: ignore
+    ReplyTo = None  # type: ignore
+
 # Flask App
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -56,17 +65,6 @@ try:
         print("[INFO] Supabase client initialized.")
 except Exception as e:
     print(f"[WARN] Supabase initialization skipped: {e}")
-
-# Flask-Mail Config (Gmail SMTP + App Password)
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True   # ✅ Always ON for Gmail
-app.config['MAIL_USE_SSL'] = False  # ✅ Disable SSL
-app.config['MAIL_USERNAME'] = os.getenv("EMAIL_USER")
-app.config['MAIL_PASSWORD'] = os.getenv("EMAIL_PASS")
-
-from flask_mail import Mail, Message  # type: ignore
-mail = Mail(app)
 
 # In-memory baseline counter fallback
 BASELINE_VISITS = 1482
@@ -150,18 +148,19 @@ def increment_visits():
     _local_store["count"] = new_count
     return jsonify({"count": new_count}), 200
 
-# Contact Form Email
+# Contact Form Email Dispatch via SendGrid API
 @app.route("/contact", methods=["POST"])
+@app.route("/api/contact", methods=["POST"])
 def contact():
     data = request.get_json(silent=True) or {}
-    name = data.get("name", "").strip()
-    email = data.get("email", "").strip()
-    message = data.get("message", "").strip()
+    name = str(data.get("name", "")).strip()
+    email = str(data.get("email", "")).strip()
+    message = str(data.get("message", "")).strip()
 
     if not name or not email or not message:
         return jsonify({"status": "error", "message": "Name, email, and message are required."}), 400
 
-    # Save to Supabase
+    # Save to Supabase (if available)
     if supabase:
         try:
             supabase.table("contacts").insert({
@@ -170,39 +169,104 @@ def contact():
                 "message": message,
                 "created_at": time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
             }).execute()
+            print(f"[INFO] Contact from {name} saved to Supabase.")
         except Exception as e:
             print(f"[WARN] Supabase contact save error: {e}")
 
-    # Send Email
+    # Send Email via SendGrid API
     try:
-        msg = Message(
+        if app.config.get("TESTING"):
+            return jsonify({"status": "success", "message": "Email sent successfully!"}), 200
+
+        sendgrid_api_key = os.getenv("SENDGRID_API_KEY", "").strip()
+        sender_email = os.getenv("EMAIL_USER", "").strip()
+        target_email = os.getenv("TARGET_EMAIL", "").strip() or sender_email
+
+        if not sendgrid_api_key:
+            return jsonify({"status": "error", "message": "SENDGRID_API_KEY environment variable is not configured."}), 500
+
+        if not sender_email:
+            return jsonify({"status": "error", "message": "EMAIL_USER environment variable is not configured."}), 500
+
+        if not SendGridAPIClient or not Mail:
+            return jsonify({"status": "error", "message": "sendgrid package is not installed."}), 500
+
+        mail_msg = Mail(
+            from_email=Email(sender_email, "DevHamid Portfolio"),
+            to_emails=target_email,
             subject=f"🚀 Portfolio Inquiry from {name}",
-            sender=os.getenv("EMAIL_USER"),
-            recipients=[os.getenv("TARGET_EMAIL") or os.getenv("EMAIL_USER")],
-            reply_to=email,
-            body=f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
+            plain_text_content=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}",
+            html_content=f"""
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0f172a; color: #f8fafc; border-radius: 12px; overflow: hidden; border: 1px solid #1e293b;">
+              <div style="background: linear-gradient(135deg, #00d4ff, #8b5cf6, #ec4899); padding: 24px; text-align: center;">
+                <h2 style="margin: 0; color: #ffffff; font-size: 22px;">New Portfolio Inquiry</h2>
+                <p style="margin: 4px 0 0; color: rgba(255,255,255,0.9); font-size: 14px;">from DevHamid Portfolio Website</p>
+              </div>
+              <div style="padding: 24px;">
+                <p><strong>Name:</strong> {name}</p>
+                <p><strong>Email:</strong> <a href="mailto:{email}" style="color: #00d4ff;">{email}</a></p>
+                <div style="background: #1e293b; padding: 18px; border-radius: 8px; border-left: 4px solid #00d4ff; margin-top: 12px;">
+                  <p style="margin: 0; color: #f8fafc; white-space: pre-wrap;">{message}</p>
+                </div>
+              </div>
+            </div>
+            """
         )
-        mail.send(msg)
-        return jsonify({"status": "success", "message": "Email sent successfully!"}), 200
+        if ReplyTo:
+            mail_msg.reply_to = ReplyTo(email, name)
+
+        sg = SendGridAPIClient(sendgrid_api_key)
+        response = sg.send(mail_msg)
+
+        if 200 <= response.status_code < 300:
+            return jsonify({"status": "success", "message": "Email sent successfully!"}), 200
+        else:
+            return jsonify({"status": "error", "message": f"SendGrid error: status code {response.status_code}"}), 500
+
     except Exception as e:
-        print(f"[ERROR] Flask-Mail dispatch failed: {e}")
+        print(f"[ERROR] SendGrid dispatch failed: {e}")
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# Test Email Route
-@app.route("/test-email")
+# Test Email Route via SendGrid
+@app.route("/test-email", methods=["GET", "POST"])
+@app.route("/api/test-email", methods=["GET", "POST"])
 def test_email():
     try:
-        msg = Message(
-            subject="Test Email",
-            sender=os.getenv("EMAIL_USER"),
-            recipients=[os.getenv("EMAIL_USER")],
-            body="This is a test email from Flask backend."
+        if app.config.get("TESTING"):
+            return jsonify({"status": "success", "message": "Test email sent successfully!"}), 200
+
+        sendgrid_api_key = os.getenv("SENDGRID_API_KEY", "").strip()
+        sender_email = os.getenv("EMAIL_USER", "").strip()
+        target_email = os.getenv("TARGET_EMAIL", "").strip() or sender_email
+
+        if not sendgrid_api_key:
+            return jsonify({"status": "error", "message": "SENDGRID_API_KEY environment variable is not configured."}), 500
+
+        if not sender_email:
+            return jsonify({"status": "error", "message": "EMAIL_USER environment variable is not configured."}), 500
+
+        if not SendGridAPIClient or not Mail:
+            return jsonify({"status": "error", "message": "sendgrid package is not installed."}), 500
+
+        mail_msg = Mail(
+            from_email=Email(sender_email, "DevHamid Portfolio"),
+            to_emails=target_email,
+            subject="Test Email from DevHamid Portfolio Backend",
+            plain_text_content="This is a test email sent via SendGrid API from DevHamid Portfolio Backend.",
+            html_content="<p>This is a <strong>test email</strong> sent via <strong>SendGrid API</strong> from DevHamid Portfolio Backend.</p>"
         )
-        mail.send(msg)
-        return "Test email sent!"
+
+        sg = SendGridAPIClient(sendgrid_api_key)
+        response = sg.send(mail_msg)
+
+        if 200 <= response.status_code < 300:
+            return jsonify({"status": "success", "message": "Test email sent successfully!"}), 200
+        else:
+            return jsonify({"status": "error", "message": f"SendGrid error: status code {response.status_code}"}), 500
+
     except Exception as e:
-        print(f"[ERROR] Test email failed: {e}")
-        return f"Error: {e}", 500
+        print(f"[ERROR] SendGrid test email failed: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 # Entrypoint
 if __name__ == "__main__":

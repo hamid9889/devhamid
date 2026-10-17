@@ -16,9 +16,9 @@ services:
         sync: false
       - key: SUPABASE_KEY
         sync: false
-      - key: EMAIL_USER
+      - key: SENDGRID_API_KEY
         sync: false
-      - key: EMAIL_PASS
+      - key: EMAIL_USER
         sync: false
       - key: TARGET_EMAIL
         value: 8090hamid@gmail.com

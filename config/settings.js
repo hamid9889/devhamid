@@ -28,13 +28,10 @@ const settings = {
   nodeEnv: process.env.NODE_ENV || 'development',
   isProduction: process.env.NODE_ENV === 'production',
 
-  // Email
+  // Email (SendGrid API)
+  sendgridApiKey: process.env.SENDGRID_API_KEY || '',
   targetEmail: process.env.TARGET_EMAIL || process.env.RECEIVER_EMAIL || '8090hamid@gmail.com',
   emailUser: process.env.EMAIL_USER || '',
-  emailPass: process.env.EMAIL_PASS || '',
-  smtpHost: process.env.EMAIL_HOST || 'smtp.gmail.com',
-  smtpPort: parseInt(process.env.EMAIL_PORT || '587', 10),
-  smtpSecure: process.env.EMAIL_SECURE === 'true',
 
   // GitHub
   githubUsername: process.env.GITHUB_USERNAME || 'hamid9889',

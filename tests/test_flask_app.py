@@ -60,6 +60,14 @@ class TestFlaskPortfolioBackend(unittest.TestCase):
         self.assertEqual(data.get('status'), 'success')
         print("[PASS] POST /contact succeeded with status: success.")
 
+    def test_test_email_route(self):
+        """Test GET /test-email returns status: success JSON."""
+        response = self.client.get('/test-email')
+        self.assertEqual(response.status_code, 200)
+        data = response.get_json()
+        self.assertEqual(data.get('status'), 'success')
+        print("[PASS] GET /test-email succeeded with status: success.")
+
     def test_projects_api(self):
         """Test GET /projects returns list with name, description, stars, forks, link."""
         response = self.client.get('/projects')
