@@ -1,3 +1,0 @@
-"""
-DevHamid Portfolio Tests Package
-"""
