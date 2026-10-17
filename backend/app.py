@@ -14,7 +14,7 @@ Render Deployment:
 import os
 import sys
 from pathlib import Path
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 from dotenv import load_dotenv
 
 # Ensure backend and root paths are in sys.path
@@ -93,13 +93,8 @@ def health():
         "message": "Backend running successfully!"
     }), 200
 
-if __name__ == '__main__':
-    port = int(os.getenv('PORT', 5000))
-    print(f"[INFO] Starting DevHamid Flask Backend on port {port}...")
-    app.run(host='0.0.0.0', port=port, debug=True)
-
+# Final Entrypoint for Render
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get("PORT", 5000))
     print(f"[INFO] Starting DevHamid Flask Backend on port {port}...")
     app.run(host="0.0.0.0", port=port)
