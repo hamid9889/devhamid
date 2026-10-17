@@ -40,7 +40,7 @@ def get_github_projects(username: str = "hamid9889") -> List[Dict[str, Any]]:
 
     # Optional GitHub Personal Access Token to raise rate limit from 60 to 5,000 req/hr
     token = os.getenv("GITHUB_TOKEN")
-    if token:
+    if token and not token.startswith("<") and not "token" in token.lower():
         headers["Authorization"] = f"Bearer {token}"
 
     try:

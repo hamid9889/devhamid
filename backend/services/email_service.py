@@ -17,7 +17,7 @@ except ImportError:
     Message = None
 
 # Global Mail instance
-mail = Mail()
+mail = Mail() if Mail is not None else None
 
 def init_mail(app):
     """Initialize Flask-Mail extension with app configuration."""
@@ -33,7 +33,7 @@ def init_mail(app):
         else "DevHamid Portfolio <noreply@devhamid.com>"
     )
 
-    if Mail is not None:
+    if mail is not None:
         mail.init_app(app)
         print("[INFO] Flask-Mail initialized.")
     return mail
@@ -47,8 +47,8 @@ def send_contact_email(name: str, sender_email: str, message_text: str) -> Tuple
     email_pass = os.getenv('EMAIL_PASS')
     target_email = os.getenv('TARGET_EMAIL') or os.getenv('RECEIVER_EMAIL', '8090hamid@gmail.com')
 
-    # If SMTP credentials are not configured, log a simulated dispatch
-    if not email_user or not email_pass:
+    # If SMTP credentials are not configured or contain template placeholders, log a simulated dispatch
+    if not email_user or not email_pass or "<" in email_pass or "your-" in email_pass:
         print(f"[SIMULATED EMAIL] To: {target_email} | From: {name} ({sender_email}) | Message: {message_text[:80]}...")
         return True, "Mock email dispatched (EMAIL_USER / EMAIL_PASS not configured in .env)"
 
