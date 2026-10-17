@@ -16,6 +16,8 @@ visits_bp = Blueprint('visits', __name__)
 
 @visits_bp.route('/visits', methods=['GET', 'POST'])
 @visits_bp.route('/api/visits', methods=['GET', 'POST'])
+@visits_bp.route('/visits/increment', methods=['POST'])
+@visits_bp.route('/api/visits/increment', methods=['POST'])
 @visits_bp.route('/api/analytics/visitor', methods=['GET', 'POST'])
 @visits_bp.route('/api/analytics/visit', methods=['GET', 'POST'])
 def handle_visits():

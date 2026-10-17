@@ -60,14 +60,17 @@ try:
     from backend.routes.contact import contact_bp
     from backend.routes.projects import projects_bp
     from backend.routes.visits import visits_bp
+    from backend.routes.posts import posts_bp
 except ImportError:
     from routes.contact import contact_bp  # type: ignore
     from routes.projects import projects_bp  # type: ignore
     from routes.visits import visits_bp  # type: ignore
+    from routes.posts import posts_bp  # type: ignore
 
 app.register_blueprint(contact_bp)
 app.register_blueprint(projects_bp)
 app.register_blueprint(visits_bp)
+app.register_blueprint(posts_bp)
 
 # Default Root Route
 @app.route('/')
