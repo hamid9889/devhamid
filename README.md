@@ -1,5 +1,7 @@
 # DevHamid - Professional Developer Portfolio & AI/ML Platform
 
+asdfghjkl;gi
+
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -21,7 +23,7 @@
 
 ## 🌟 Live Demo & Preview
 
-- **Frontend Live Demo (Vercel):** [https://devhamid.vercel.app](https://devhamid.vercel.app) *(or your Vercel deployment URL)*
+- **Frontend Live Demo (Vercel):** [https://devhamid.vercel.app](https://devhamid.vercel.app) _(or your Vercel deployment URL)_
 - **Backend API (Render/Railway):** [https://devhamid-backend.onrender.com/api/health](https://devhamid-backend.onrender.com/api/health)
 - **GitHub Profile:** [@hamid9889](https://github.com/hamid9889)
 
@@ -30,24 +32,31 @@
 ## 📸 Visual Showcase
 
 ### 1. Hero Section & Real-Time Visitor Counter (Dark Mode)
+
 ![Hero Section Screenshot](docs/screenshots/hero_section.png)
 
 ### 2. Dual-Theme Engine (Light Mode Switch)
+
 ![Light Mode Screenshot](docs/screenshots/light_mode.png)
 
 ### 3. Dedicated Skills & Tech Stack Wall
+
 ![Skills & Tech Stack Screenshot](docs/screenshots/skills_section.png)
 
 ### 4. Real-Time GitHub Repository Grid with Search & Filters
+
 ![Projects Grid Screenshot](docs/screenshots/projects_grid.png)
 
 ### 5. Machine Learning & Mathematics Blog (LinkedIn-Style Cards)
+
 ![ML Blog Cards Screenshot](docs/screenshots/ml_blog_cards.png)
 
 ### 6. Research Article Reader & High-Resolution Infographic Modal
+
 ![Article Reader Modal Screenshot](docs/screenshots/article_modal.png)
 
 ### 7. Interactive Contact Form with Validation & Nodemailer Dispatch
+
 ![Contact Section Screenshot](docs/screenshots/contact_section.png)
 
 ---
@@ -55,27 +64,32 @@
 ## 🚀 Key Features & Architecture
 
 ### 1. Hero Section
-- **Personalized Header:** *"Hi, I’m Hamid 👋"*
-- **Tagline:** *"Specializing in AI/ML & Generative AI"*
+
+- **Personalized Header:** _"Hi, I’m Hamid 👋"_
+- **Tagline:** _"Specializing in AI/ML & Generative AI"_
 - **Live Metrics:** Real-time visitor counter backed by Supabase with 24-hour session deduplication.
 - **Theme Switcher:** Dark / Light mode toggle with smooth CSS transitions and local storage persistence.
 
 ### 2. GitHub Projects Showcase
+
 - **Real-Time Integration:** Fetches public repositories from `@hamid9889` using GitHub API.
 - **Client-Side Caching:** 15-minute backend and localStorage caching prevents GitHub API rate limits.
 - **Interactive UI:** Search filter, topic pills, direct repo links, language badges, and star/fork metrics.
 
 ### 3. Machine Learning & Mathematics Blog
+
 - **LinkedIn-Style Cards:** Features posts on Backpropagation, PyTorch vs. JAX, and SVD/PCA Dimensionality Reduction.
 - **Interactive Modal Reader:** Full-width article viewer with math formulas and high-resolution infographics.
 - **Modular Data Source:** New articles can be added in seconds by editing `frontend/data/posts.json`.
 
 ### 4. Direct Email Contact Service
+
 - **Nodemailer (Node.js) & smtplib (Python):** Direct delivery to `8090hamid@gmail.com`.
 - **Ethereal Mock Transporter:** Automatically runs in development if SMTP credentials are not yet configured.
 - **Supabase Archival:** Contact messages are also safely persisted in the Supabase `contact_messages` table.
 
 ### 5. AI/ML & Generative AI Pipelines
+
 - **Computer Vision (`face_recognition` + `opencv-python-headless`):** Face detection, 128-d facial embeddings, and identity verification.
 - **Audio Processing (`SpeechRecognition` + `pydub`):** Audio format transcoding (MP3/OGG to WAV), noise reduction, and speech-to-text.
 - **Generative AI Assistant:** Context-aware chatbot trained on Hamid's projects, resume, and technical skills.
@@ -158,15 +172,15 @@ DevHamid/
 
 During this deep cleanup and restructuring, the following optimizations were performed:
 
-| Category | Action Taken | Rationale |
-| :--- | :--- | :--- |
-| **Root Duplicates** | Deleted duplicate `favicon.png`, `logo.png`, `profile.jpeg`, `script.js`, `styles.css` from the project root | All active assets are cleanly organized under `frontend/assets/images/`, `frontend/css/`, and `frontend/js/`. |
-| **Local Databases** | Removed `backend/data/portfolio.db` (SQLite) and `visitorCount.json` | Migrated database architecture exclusively to Supabase Cloud PostgreSQL. |
-| **Auto-Generated Artifacts** | Removed `__pycache__/` and excluded `node_modules/`, `venv/`, `dist/`, `build/` | Cleaned repository footprint to **16.7 MB** (well under the 500 MB limit). |
-| **Modular Testing** | Created dedicated `/tests` directory and moved test scripts (`test_api.js`, `test_email.js`, `test_email.py`, `test_ai_pipeline.py`) | Decouples production application code from test runners. |
-| **Supabase Integration** | Added `backend/services/supabaseClient.js`, `supabase_client.py`, and `backend/models/` | Provides cloud-native persistent storage with zero local disk dependencies. |
-| **AI/ML Pipelines** | Added modular services for `face_recognition`, `dlib`, `opencv-python-headless`, `SpeechRecognition`, and `pydub` | Fulfills core AI/ML background requirements with live REST endpoints. |
-| **Deployment Isolation** | Added `.vercelignore` and updated `.gitignore` | Prevents Vercel from unnecessarily compiling backend files or exceeding build limits. |
+| Category                     | Action Taken                                                                                                                         | Rationale                                                                                                     |
+| :--------------------------- | :----------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------ |
+| **Root Duplicates**          | Deleted duplicate `favicon.png`, `logo.png`, `profile.jpeg`, `script.js`, `styles.css` from the project root                         | All active assets are cleanly organized under `frontend/assets/images/`, `frontend/css/`, and `frontend/js/`. |
+| **Local Databases**          | Removed `backend/data/portfolio.db` (SQLite) and `visitorCount.json`                                                                 | Migrated database architecture exclusively to Supabase Cloud PostgreSQL.                                      |
+| **Auto-Generated Artifacts** | Removed `__pycache__/` and excluded `node_modules/`, `venv/`, `dist/`, `build/`                                                      | Cleaned repository footprint to **16.7 MB** (well under the 500 MB limit).                                    |
+| **Modular Testing**          | Created dedicated `/tests` directory and moved test scripts (`test_api.js`, `test_email.js`, `test_email.py`, `test_ai_pipeline.py`) | Decouples production application code from test runners.                                                      |
+| **Supabase Integration**     | Added `backend/services/supabaseClient.js`, `supabase_client.py`, and `backend/models/`                                              | Provides cloud-native persistent storage with zero local disk dependencies.                                   |
+| **AI/ML Pipelines**          | Added modular services for `face_recognition`, `dlib`, `opencv-python-headless`, `SpeechRecognition`, and `pydub`                    | Fulfills core AI/ML background requirements with live REST endpoints.                                         |
+| **Deployment Isolation**     | Added `.vercelignore` and updated `.gitignore`                                                                                       | Prevents Vercel from unnecessarily compiling backend files or exceeding build limits.                         |
 
 ---
 
@@ -185,7 +199,7 @@ During this deep cleanup and restructuring, the following optimizations were per
    SUPABASE_KEY=your_supabase_anon_key
    ```
 
-*(Note: If Supabase credentials are not set, the backend runs in a resilient in-memory mode without crashing).*
+_(Note: If Supabase credentials are not set, the backend runs in a resilient in-memory mode without crashing)._
 
 ---
 
@@ -198,6 +212,7 @@ cd backend
 npm install
 npm start
 ```
+
 - Web Application & API: `http://localhost:5000`
 - Health Diagnostic: `http://localhost:5000/api/health`
 
@@ -224,12 +239,14 @@ python app.py
 ## 🚀 Cloud Deployment Guide
 
 ### Deploy Frontend to Vercel
+
 1. Push this repository to GitHub.
 2. Log into [Vercel](https://vercel.com) and click **Add New Project**.
 3. Select your repository. Set **Root Directory** to `frontend` (or leave at root, handled by `.vercelignore` and root `vercel.json`).
 4. Click **Deploy**.
 
 ### Deploy Backend to Render or Railway
+
 1. Create a new **Web Service** on [Render](https://render.com) or [Railway](https://railway.app).
 2. Connect your repository and set:
    - **Root Directory:** `backend`
